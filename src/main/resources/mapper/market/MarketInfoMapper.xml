@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yautumn.dao.market.MarketInfoMapper">
+  <resultMap id="BaseResultMap" type="com.yautumn.common.entity.market.MarketInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="market_name" jdbcType="VARCHAR" property="marketName" />
+    <result column="market_province" jdbcType="VARCHAR" property="marketProvince" />
+    <result column="market_city" jdbcType="VARCHAR" property="marketCity" />
+    <result column="market_addr" jdbcType="VARCHAR" property="marketAddr" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="createtime" jdbcType="VARCHAR" property="createtime" />
+    <result column="updatetime" jdbcType="VARCHAR" property="updatetime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, market_name, market_province, market_city, market_addr, status, createtime, updatetime,
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from market_information
+    where status = 1 and id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from market_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yautumn.common.entity.market.MarketInfo">
+    insert into market_information (id, market_name, market_province, 
+      market_city, market_addr,status, createtime,
+      updatetime, remark)
+    values (#{id,jdbcType=INTEGER}, #{marketName,jdbcType=VARCHAR}, #{marketProvince,jdbcType=VARCHAR},
+      #{marketCity,jdbcType=VARCHAR}, #{marketAddr,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR},
+      #{updatetime,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yautumn.common.entity.market.MarketInfo">
+    insert into market_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="marketName != null">
+        market_name,
+      </if>
+      <if test="marketProvince != null">
+        market_province,
+      </if>
+      <if test="marketCity != null">
+        market_city,
+      </if>
+      <if test="marketAddr != null">
+        market_addr,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="marketName != null">
+        #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="marketProvince != null">
+        #{marketProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="marketCity != null">
+        #{marketCity,jdbcType=VARCHAR},
+      </if>
+      <if test="marketAddr != null">
+        #{marketAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yautumn.common.entity.market.MarketInfo">
+    update market_information
+    <set>
+      <if test="marketName != null">
+        market_name = #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="marketProvince != null">
+        market_province = #{marketProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="marketCity != null">
+        market_city = #{marketCity,jdbcType=VARCHAR},
+      </if>
+      <if test="marketAddr != null">
+        market_addr = #{marketAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yautumn.common.entity.market.MarketInfo">
+    update market_information
+    set market_name = #{marketName,jdbcType=VARCHAR},
+      market_province = #{marketProvince,jdbcType=VARCHAR},
+      market_city = #{marketCity,jdbcType=VARCHAR},
+      market_addr = #{marketAddr,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from market_information
+    where status = 1
+    limit #{start},#{end}
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer">
+    select count(1) from market_information where status = 1
+  </select>
+</mapper>

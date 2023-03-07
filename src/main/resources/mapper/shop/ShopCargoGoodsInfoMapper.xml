@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yautumn.dao.shop.ShopCargoGoodsInfoMapper">
+  <resultMap id="BaseResultMap" type="com.yautumn.common.entity.shop.ShopCargoGoodsInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="product_brand" jdbcType="VARCHAR" property="productBrand"/>
+    <result column="cargo_goods_name" jdbcType="VARCHAR" property="cargoGoodsName" />
+    <result column="cargo_goods_type" jdbcType="VARCHAR" property="cargoGoodsType" />
+    <result column="cargo_goods_specific" jdbcType="VARCHAR" property="cargoGoodsSpecific" />
+    <result column="cargo_goods_unit" jdbcType="VARCHAR" property="cargoGoodsUnit" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="createtime" jdbcType="VARCHAR" property="createtime" />
+    <result column="updatetime" jdbcType="VARCHAR" property="updatetime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, shop_id, product_brand, cargo_goods_name, cargo_goods_type, cargo_goods_specific, cargo_goods_unit, status,
+    createtime, updatetime, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shop_cargo_goods_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from shop_cargo_goods_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yautumn.common.entity.shop.ShopCargoGoodsInfo">
+    insert into shop_cargo_goods_information (shop_id, product_brand,cargo_goods_name, cargo_goods_type,
+      cargo_goods_specific, cargo_goods_unit, status, 
+      createtime, updatetime, remark
+      )
+    values (#{shopId,jdbcType=INTEGER},#{productBrand,jdbcType=VARCHAR}, #{cargoGoodsName,jdbcType=VARCHAR}, #{cargoGoodsType,jdbcType=VARCHAR},
+      #{cargoGoodsSpecific,jdbcType=VARCHAR}, #{cargoGoodsUnit,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR}, #{updatetime,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yautumn.common.entity.shop.ShopCargoGoodsInfo">
+    insert into shop_cargo_goods_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="productBrand != null">
+        product_brand,
+      </if>
+      <if test="cargoGoodsName != null">
+        cargo_goods_name,
+      </if>
+      <if test="cargoGoodsType != null">
+        cargo_goods_type,
+      </if>
+      <if test="cargoGoodsSpecific != null">
+        cargo_goods_specific,
+      </if>
+      <if test="cargoGoodsUnit != null">
+        cargo_goods_unit,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="productBrand != null">
+        #{productBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoGoodsName != null">
+        #{cargoGoodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoGoodsType != null">
+        #{cargoGoodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoGoodsSpecific != null">
+        #{cargoGoodsSpecific,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoGoodsUnit != null">
+        #{cargoGoodsUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yautumn.common.entity.shop.ShopCargoGoodsInfo">
+    update shop_cargo_goods_information
+    <set>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="productBrand != null">
+        #{productBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoGoodsName != null">
+        cargo_goods_name = #{cargoGoodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoGoodsType != null">
+        cargo_goods_type = #{cargoGoodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoGoodsSpecific != null">
+        cargo_goods_specific = #{cargoGoodsSpecific,jdbcType=VARCHAR},
+      </if>
+      <if test="cargoGoodsUnit != null">
+        cargo_goods_unit = #{cargoGoodsUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yautumn.common.entity.shop.ShopCargoGoodsInfo">
+    update shop_cargo_goods_information
+    set shop_id = #{shopId,jdbcType=INTEGER},
+      product_brand    = #{productBrand,jdbcType=VARCHAR},
+      cargo_goods_name = #{cargoGoodsName,jdbcType=VARCHAR},
+      cargo_goods_type = #{cargoGoodsType,jdbcType=VARCHAR},
+      cargo_goods_specific = #{cargoGoodsSpecific,jdbcType=VARCHAR},
+      cargo_goods_unit = #{cargoGoodsUnit,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findAll" resultType="com.yautumn.common.entity.shop.ShopCargoAgentInfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from shop_cargo_goods_information
+    where status = 1 and shop_id = #{shopId}
+    limit #{start},#{end}
+  </select>
+  <select id="countByShopId" resultType="java.lang.Integer">
+    select count(1)
+    from shop_cargo_goods_information
+    where status = 1 and shop_id = #{shopId}
+  </select>
+  <insert id="batchInsert">
+    insert into shop_cargo_goods_information (shop_id, product_brand,cargo_goods_name, cargo_goods_type,
+    cargo_goods_specific, cargo_goods_unit, status,
+    createtime, updatetime, remark)
+    values
+    <foreach item="item" collection="list" index="index" separator=",">
+      (#{shopId,jdbcType=INTEGER},#{productBrand,jdbcType=VARCHAR}, #{cargoGoodsName,jdbcType=VARCHAR}, #{cargoGoodsType,jdbcType=VARCHAR},
+      #{cargoGoodsSpecific,jdbcType=VARCHAR}, #{cargoGoodsUnit,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+      #{createtime,jdbcType=VARCHAR}, #{updatetime,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yautumn.dao.company.CompanyCommodityInfoMapper">
+  <resultMap id="BaseResultMap" type="com.yautumn.common.entity.company.CompanyCommodityInfo">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="type" jdbcType="VARCHAR" property="type"/>
+    <result column="specific" jdbcType="VARCHAR" property="specific"/>
+    <result column="unit" jdbcType="VARCHAR" property="unit"/>
+    <result column="iscontract" jdbcType="VARCHAR" property="iscontract"/>
+    <result column="status" jdbcType="VARCHAR" property="status"/>
+    <result column="createtime" jdbcType="VARCHAR" property="createtime"/>
+    <result column="updatetime" jdbcType="VARCHAR" property="updatetime"/>
+    <result column="remark" jdbcType="VARCHAR" property="remark"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id
+    , name, type, specific, unit, iscontract, status, createtime, updatetime, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List"/>
+    from company_commodity_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete
+    from company_commodity_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yautumn.common.entity.company.CompanyCommodityInfo">
+    insert into company_commodity_information (id, name, type,
+                                               specific, unit, iscontract,
+                                               status, createtime, updatetime,
+                                               remark)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
+            #{specific,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{iscontract,jdbcType=VARCHAR},
+            #{status,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, #{updatetime,jdbcType=VARCHAR},
+            #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yautumn.common.entity.company.CompanyCommodityInfo">
+    insert into company_commodity_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="specific != null">
+        specific,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="iscontract != null">
+        iscontract,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="specific != null">
+        #{specific,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="iscontract != null">
+        #{iscontract,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yautumn.common.entity.company.CompanyCommodityInfo">
+    update company_commodity_information
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="specific != null">
+        specific = #{specific,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="iscontract != null">
+        iscontract = #{iscontract,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yautumn.common.entity.company.CompanyCommodityInfo">
+    update company_commodity_information
+    set name       = #{name,jdbcType=VARCHAR},
+        type       = #{type,jdbcType=VARCHAR},
+        specific   = #{specific,jdbcType=VARCHAR},
+        unit       = #{unit,jdbcType=VARCHAR},
+        iscontract = #{iscontract,jdbcType=VARCHAR},
+        status     = #{status,jdbcType=VARCHAR},
+        createtime = #{createtime,jdbcType=VARCHAR},
+        updatetime = #{updatetime,jdbcType=VARCHAR},
+        remark     = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

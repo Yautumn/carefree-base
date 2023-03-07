@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yautumn.dao.shop.ShopInfoMapper">
+  <resultMap id="BaseResultMap" type="com.yautumn.common.entity.shop.ShopInfo">
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="alias" jdbcType="VARCHAR" property="alias"/>
+    <result column="market_id" jdbcType="INTEGER" property="marketId"/>
+    <result column="house_number" jdbcType="VARCHAR" property="houseNumber"/>
+    <result column="addr" jdbcType="VARCHAR" property="addr"/>
+    <result column="tag" jdbcType="VARCHAR" property="tag"/>
+    <result column="keeper" jdbcType="VARCHAR" property="keeper"/>
+    <result column="phone1" jdbcType="VARCHAR" property="phone1"/>
+    <result column="phone2" jdbcType="VARCHAR" property="phone2"/>
+    <result column="mobile1" jdbcType="VARCHAR" property="mobile1"/>
+    <result column="mobile2" jdbcType="VARCHAR" property="mobile2"/>
+    <result column="status" jdbcType="VARCHAR" property="status"/>
+    <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    <result column="createtime" jdbcType="VARCHAR" property="createtime"/>
+    <result column="updatetime" jdbcType="VARCHAR" property="updatetime"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, alias, market_id, house_number, addr, tag, keeper, phone1, phone2, mobile1, 
+    mobile2, status, remark, createtime, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List"/>
+    from shop_information
+    where status = 1 and id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete
+    from shop_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yautumn.common.entity.shop.ShopInfo">
+    insert into shop_information ( name, alias,
+                                  market_id, house_number, addr,
+                                  tag, keeper, phone1,
+                                  phone2, mobile1, mobile2,
+                                  status, remark, createtime,
+                                  updatetime)
+    values (#{name,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR},
+            #{marketId,jdbcType=INTEGER}, #{houseNumber,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR},
+            #{tag,jdbcType=VARCHAR}, #{keeper,jdbcType=VARCHAR}, #{phone1,jdbcType=VARCHAR},
+            #{phone2,jdbcType=VARCHAR}, #{mobile1,jdbcType=VARCHAR}, #{mobile2,jdbcType=VARCHAR},
+            #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR},
+            #{updatetime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yautumn.common.entity.shop.ShopInfo">
+    insert into shop_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="alias != null">
+        alias,
+      </if>
+      <if test="marketId != null">
+        market_id,
+      </if>
+      <if test="houseNumber != null">
+        house_number,
+      </if>
+      <if test="addr != null">
+        addr,
+      </if>
+      <if test="tag != null">
+        tag,
+      </if>
+      <if test="keeper != null">
+        keeper,
+      </if>
+      <if test="phone1 != null">
+        phone1,
+      </if>
+      <if test="phone2 != null">
+        phone2,
+      </if>
+      <if test="mobile1 != null">
+        mobile1,
+      </if>
+      <if test="mobile2 != null">
+        mobile2,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="marketId != null">
+        #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="houseNumber != null">
+        #{houseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="keeper != null">
+        #{keeper,jdbcType=VARCHAR},
+      </if>
+      <if test="phone1 != null">
+        #{phone1,jdbcType=VARCHAR},
+      </if>
+      <if test="phone2 != null">
+        #{phone2,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile1 != null">
+        #{mobile1,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile2 != null">
+        #{mobile2,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatedatetime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yautumn.common.entity.shop.ShopInfo">
+    update shop_information
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        alias = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="marketId != null">
+        market_id = #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="houseNumber != null">
+        house_number = #{houseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="keeper != null">
+        keeper = #{keeper,jdbcType=VARCHAR},
+      </if>
+      <if test="phone1 != null">
+        phone1 = #{phone1,jdbcType=VARCHAR},
+      </if>
+      <if test="phone2 != null">
+        phone2 = #{phone2,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile1 != null">
+        mobile1 = #{mobile1,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile2 != null">
+        mobile2 = #{mobile2,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatedatetime = #{updatedatetime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yautumn.common.entity.shop.ShopInfo">
+    update shop_information
+    set name           = #{name,jdbcType=VARCHAR},
+        alias          = #{alias,jdbcType=VARCHAR},
+        market_id      = #{marketId,jdbcType=INTEGER},
+        house_number   = #{houseNumber,jdbcType=VARCHAR},
+        addr           = #{addr,jdbcType=VARCHAR},
+        tag            = #{tag,jdbcType=VARCHAR},
+        keeper         = #{keeper,jdbcType=VARCHAR},
+        phone1         = #{phone1,jdbcType=VARCHAR},
+        phone2         = #{phone2,jdbcType=VARCHAR},
+        mobile1        = #{mobile1,jdbcType=VARCHAR},
+        mobile2        = #{mobile2,jdbcType=VARCHAR},
+        status         = #{status,jdbcType=VARCHAR},
+        remark         = #{remark,jdbcType=VARCHAR},
+        createtime     = #{createtime,jdbcType=VARCHAR},
+        updatetime = #{updatetime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectCount" resultType="java.lang.Integer">
+    select count(1)
+    from shop_information
+    where status = 1
+  </select>
+  <select id="findShopAll" resultType="com.yautumn.common.entity.shop.ShopInfo">
+    select
+    <include refid="Base_Column_List"/>
+    from shop_information
+    where status = 1
+    limit #{start},#{end}
+  </select>
+</mapper>

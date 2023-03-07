@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yautumn.dao.shop.ShopFactoryInfoMapper">
+  <resultMap id="BaseResultMap" type="com.yautumn.common.entity.shop.ShopFactoryInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="factory_name" jdbcType="VARCHAR" property="factoryName" />
+    <result column="factory_addr" jdbcType="VARCHAR" property="factoryAddr" />
+    <result column="factory_phone1" jdbcType="VARCHAR" property="factoryPhone1" />
+    <result column="factory_phone2" jdbcType="VARCHAR" property="factoryPhone2" />
+    <result column="factory_mobile1" jdbcType="VARCHAR" property="factoryMobile1" />
+    <result column="factory_mobile2" jdbcType="VARCHAR" property="factoryMobile2" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="createtime" jdbcType="VARCHAR" property="createtime" />
+    <result column="updatetime" jdbcType="VARCHAR" property="updatetime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, shop_id, factory_name, factory_addr, factory_phone1, factory_phone2, factory_mobile1, 
+    factory_mobile2, status, createtime, updatetime, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shop_factory_information
+    where status = 1 and  id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from shop_factory_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yautumn.common.entity.shop.ShopFactoryInfo">
+    insert into shop_factory_information (shop_id, factory_name,
+      factory_addr, factory_phone1, factory_phone2, 
+      factory_mobile1, factory_mobile2, status, 
+      createtime, updatetime, remark
+      )
+    values (#{shopId,jdbcType=INTEGER}, #{factoryName,jdbcType=VARCHAR},
+      #{factoryAddr,jdbcType=VARCHAR}, #{factoryPhone1,jdbcType=VARCHAR}, #{factoryPhone2,jdbcType=VARCHAR}, 
+      #{factoryMobile1,jdbcType=VARCHAR}, #{factoryMobile2,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR}, #{updatetime,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yautumn.common.entity.shop.ShopFactoryInfo">
+    insert into shop_factory_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="factoryName != null">
+        factory_name,
+      </if>
+      <if test="factoryAddr != null">
+        factory_addr,
+      </if>
+      <if test="factoryPhone1 != null">
+        factory_phone1,
+      </if>
+      <if test="factoryPhone2 != null">
+        factory_phone2,
+      </if>
+      <if test="factoryMobile1 != null">
+        factory_mobile1,
+      </if>
+      <if test="factoryMobile2 != null">
+        factory_mobile2,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryName != null">
+        #{factoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryAddr != null">
+        #{factoryAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryPhone1 != null">
+        #{factoryPhone1,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryPhone2 != null">
+        #{factoryPhone2,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryMobile1 != null">
+        #{factoryMobile1,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryMobile2 != null">
+        #{factoryMobile2,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yautumn.common.entity.shop.ShopFactoryInfo">
+    update shop_factory_information
+    <set>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="factoryName != null">
+        factory_name = #{factoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryAddr != null">
+        factory_addr = #{factoryAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryPhone1 != null">
+        factory_phone1 = #{factoryPhone1,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryPhone2 != null">
+        factory_phone2 = #{factoryPhone2,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryMobile1 != null">
+        factory_mobile1 = #{factoryMobile1,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryMobile2 != null">
+        factory_mobile2 = #{factoryMobile2,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yautumn.common.entity.shop.ShopFactoryInfo">
+    update shop_factory_information
+    set shop_id = #{shopId,jdbcType=INTEGER},
+      factory_name = #{factoryName,jdbcType=VARCHAR},
+      factory_addr = #{factoryAddr,jdbcType=VARCHAR},
+      factory_phone1 = #{factoryPhone1,jdbcType=VARCHAR},
+      factory_phone2 = #{factoryPhone2,jdbcType=VARCHAR},
+      factory_mobile1 = #{factoryMobile1,jdbcType=VARCHAR},
+      factory_mobile2 = #{factoryMobile2,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPage" resultMap="BaseResultMap" resultType="com.yautumn.common.entity.shop.ShopFactoryInfo">
+    select
+        <include refid="Base_Column_List" />
+    from
+      shop_factory_information
+    where
+        status = 1
+    limit #{start},#{end}
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer">
+    select
+      count(1)
+    from
+      shop_factory_information
+    where
+      state = 1
+      and shop_id = #{shopId}
+  </select>
+</mapper>

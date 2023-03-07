@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: springbootService
+  cloud:
+    config:
+      uri: http://localhost:8082/
+      profile: release
