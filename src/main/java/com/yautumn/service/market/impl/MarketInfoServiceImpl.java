@@ -39,6 +39,7 @@ public class MarketInfoServiceImpl implements MarketInfoService {
         MarketInfo marketInfo = new MarketInfo();
         BeanUtils.copyProperties(marketParam,marketInfo);
         Date createTime = new Date();
+        marketInfo.setStatus("1");
         marketInfo.setCreatetime(DateUtils.dateTimeToString(createTime));
         int i = marketInfoMapper.insert(marketInfo);
         if (i == 1){
@@ -55,6 +56,7 @@ public class MarketInfoServiceImpl implements MarketInfoService {
         }
         MarketInfo marketInfo = this.findById(marketParam.getId());
         BeanUtils.copyProperties(marketParam, marketInfo);
+        marketInfo.setStatus("1");
         marketInfo.setUpdatetime(DateUtils.dateTimeToString(new Date()));
         int i = marketInfoMapper.updateByPrimaryKey(marketInfo);
         if (i == 1){

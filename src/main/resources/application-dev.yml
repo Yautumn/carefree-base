@@ -26,7 +26,17 @@ eureka:
     prefer-ip-address: true
 
 mybatis:
-  mapper-locations: classpath*:mybatis/mapper/*/*.xml·
+  mapper-locations: classpath*:mybatis/mapper/*/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+redisprefix: basic-
+
+fileUploadPath: /Users/yautumn/fileupload/
+fileCreatePath: /Users/yautumn/filecreate/
+
+logging:
+  config: classpath:logback-spring.xml
 
 hystrix:
   command:
@@ -40,6 +50,8 @@ hystrix:
   metrics:
     polling-interval-ms:2000
 
+shopMemberMax: 3
+
 ribbon:
   OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
   ReadTimeout: 1000   #负载均衡超时时间，默认值5000
@@ -47,9 +59,6 @@ ribbon:
   MaxAutoRetries: 0     #对当前实例的重试次数，默认0
   MaxAutoRetriesNextServer: 1
 
-shopMemberMax: 3
-
-redisprefix: demo-user-
 feign:
   hystrix:
     enabled: true
