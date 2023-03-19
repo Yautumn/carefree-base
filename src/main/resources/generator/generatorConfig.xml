@@ -3,16 +3,22 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
+
     <!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包-->
-    <classPathEntry location="F:\MavenRespository\mysql\mysql-connector-java\5.1.37\mysql-connector-java-5.1.37.jar"/>
+    <classPathEntry location="E:\Java\Repository\mysql\mysql-connector-java\8.0.27\mysql-connector-java-8.0.27.jar"/>
     <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!-- 表名前后加上''的分隔符 -->
+        <property name="beginningDelimiter" value="`" />
+        <property name="endingDelimiter" value="`" />
+
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/spring-cloud" userId="root" password="qeen1013">
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/carefree-base" userId="root" password="qeen1013">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -23,14 +29,25 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 生成映射文件的包名和位置-->
-        <sqlMapGenerator targetPackage="mybatis.mapping" targetProject="src/main/resources/mybatis/mapper/user">
+        <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.yautumn.dao.user" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.yautumn.dao.shop" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="t_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="market_information" domainObjectName="MarketInfo" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <!--        <table tableName="shop_information" domainObjectName="ShopInfo" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--        <table tableName="company_commodity_information" domainObjectName="CompanyCommodityInfo" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--        <table tableName="company_information" domainObjectName="CompanyInfor" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--        <table tableName="shop_agent_information" domainObjectName="ShopAgentInfo" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--        <table tableName="shop_cargo_agent_information" domainObjectName="ShopCargoAgentInfo" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--        <table tableName="shop_cargo_goods_information" domainObjectName="ShopCargoGoodsInfo" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--        <table tableName="shop_cargo_provider_information" domainObjectName="ShopCargoProviderInfo" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--        <table tableName="shop_factory_information" domainObjectName="ShopFactoryInfo" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--        <table tableName="shop_member_information" domainObjectName="ShopMemberInfo" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--        <table tableName="shop_agent_information" domainObjectName="ShopAgentInfo" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--        <table tableName="shop_commodity_information" domainObjectName="ShopCommodityInformation" enableCountByExample="ture" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
     </context>
 </generatorConfiguration>

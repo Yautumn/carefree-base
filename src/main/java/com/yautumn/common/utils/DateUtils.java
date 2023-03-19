@@ -17,6 +17,17 @@ public class DateUtils {
     }
 
     /**
+     * 日期转yyyyMMdd字符串
+     * @param date
+     * @return
+     */
+    public static String dateFormatToString(Date date){
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+        String str=sdf.format(date);
+        return str;
+    }
+
+    /**
      * 日期转yyyy-MM-dd HH:mm:SS字符串
      * @param date
      * @return

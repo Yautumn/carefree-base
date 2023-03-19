@@ -5,6 +5,7 @@ import com.yautumn.common.utils.PageBeanUtil;
 import com.yautumn.param.request.common.PageParam;
 import com.yautumn.param.request.shop.ShopCommodityParam;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -26,4 +27,6 @@ public interface ShopCommodityInfoService {
     String batchInsert(List<ShopCommodityParam> shopCommodityParams);
 
     String batchUpdate(List<ShopCommodityParam> shopCommodityParams);
+
+    List analysisExcel(MultipartFile file, int shopId);
 }

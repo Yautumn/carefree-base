@@ -30,9 +30,9 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-redisprefix: basic-
+redisprefix: carefree-base-
 
-fileUploadPath: /Users/yautumn/fileupload/
+fileUploadPath: F:/
 fileCreatePath: /Users/yautumn/filecreate/
 
 logging:
