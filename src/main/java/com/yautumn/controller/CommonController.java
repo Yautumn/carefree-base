@@ -1,5 +1,6 @@
 package com.yautumn.controller;
 
+import com.yautumn.common.entity.shop.ShopCommodityInformation;
 import com.yautumn.common.utils.ResultUtil;
 import com.yautumn.service.shop.ShopCommodityInfoService;
 import io.swagger.annotations.Api;
@@ -19,10 +20,23 @@ public class CommonController {
     @Autowired
     private ShopCommodityInfoService shopCommodityInfoService;
 
-    @ApiOperation(value = "添加商品信息方法")
-    @PostMapping("/save")
-    public ResultUtil excelAnalysis(@RequestPart("file") MultipartFile file, @RequestParam int shopId){
-        List<Map> mapList = shopCommodityInfoService.analysisExcel(file,shopId);
-        return ResultUtil.success(mapList);
+    @ApiOperation(value = "解析")
+    @GetMapping("/save")
+    public ResultUtil excelAnalysis(){
+        ShopCommodityInformation shopCommodityInformation = new ShopCommodityInformation();
+        shopCommodityInformation.setProductBrand("远东");
+        shopCommodityInformation.setProductName("BV");
+        shopCommodityInformation.setProductType("BV");
+        shopCommodityInformation.setProductSpecific("2.5");
+        shopCommodityInformation.setProductUnit("米");
+
+        ShopCommodityInformation commodityInfo = new ShopCommodityInformation();
+        commodityInfo.setProductBrand("远东");
+        commodityInfo.setProductName("BV");
+        commodityInfo.setProductType("BV");
+        commodityInfo.setProductSpecific("2.5");
+        commodityInfo.setProductUnit("米");
+
+        return ResultUtil.success(commodityInfo.equals(shopCommodityInformation));
     }
 }

@@ -54,6 +54,10 @@ public class ShopCargoAgentServiceImpl implements ShopCargoAgentService {
 
     @Override
     public String save(ShopCargoAgentParam param) {
+        ShopCargoAgentInfo agentInfo = this.selectByCondition(param.getAgentName(),param.getHouseNumber(),param.getMarketId());
+        if (isExist(agentInfo)){
+            return ExceptionsEnum.SHOP_CARGO_AGENT_IS_EXIST.name;
+        }
         ShopCargoAgentInfo shopCargoAgentInfo = new ShopCargoAgentInfo();
         BeanUtils.copyProperties(param,shopCargoAgentInfo);
         shopCargoAgentInfo.setStatus("1");
@@ -80,5 +84,16 @@ public class ShopCargoAgentServiceImpl implements ShopCargoAgentService {
             return ExceptionsEnum.SHOP_CARGO_AGENT_UPDATE_ERROR.name;
         }
         return ExceptionsEnum.SUCCESS.name;
+    }
+
+    private ShopCargoAgentInfo selectByCondition(String agentName,String houseNumber,String marketId){
+        return mapper.selectByCondition(agentName,houseNumber,marketId);
+    }
+
+    private boolean isExist(ShopCargoAgentInfo agentInfo){
+        if (null != agentInfo){
+            return true;
+        }
+        return false;
     }
 }

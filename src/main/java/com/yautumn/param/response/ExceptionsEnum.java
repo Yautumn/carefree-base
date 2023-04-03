@@ -16,17 +16,27 @@ public enum ExceptionsEnum {
 
     MARKET_DELETE_ERROR("市场删除失败"),
 
-    SHOP_IS_NOT_EXIST("商品信息不存在"),
+    SHOP_IS_NOT_EXIST("商户信息不存在"),
 
-    SHOP_INSERT_ERROR("商品信息插入失败"),
+    SHOP_INSERT_ERROR("商户信息插入失败"),
 
-    SHOP_UPDATE_ERROR("商品信息更新失败"),
+    SHOP_UPDATE_ERROR("商户信息更新失败"),
 
-    SHOP_BATCH_INSERT_ERROR("商品信息批量插入失败"),
+    SHOP_DELETE_ERROR("商户删除失败"),
 
-    SHOP_BATCH_UPDATE_ERROR("商品信息批量更新失败"),
+    SHOP_COMMODITY_IS_NOT_EXIST("商品信息不存在"),
 
-    SHOP_DELETE_ERROR("商品删除失败"),
+    SHOP_COMMODITY_IS_EXIST("商品信息已存在"),
+
+    SHOP_COMMODITY_INSERT_ERROR("商品信息插入失败"),
+
+    SHOP_COMMODITY_UPDATE_ERROR("商品信息更新失败"),
+
+    SHOP_COMMODITY_BATCH_INSERT_ERROR("商品信息批量插入失败"),
+
+    SHOP_COMMODITY_BATCH_UPDATE_ERROR("商品信息批量更新失败"),
+
+    SHOP_COMMODITY_DELETE_ERROR("商品删除失败"),
 
     SHOP_FACTORY_IS_NOT_EXIST("商户厂商信息不存在"),
 
@@ -61,6 +71,8 @@ public enum ExceptionsEnum {
     SHOP_AGENT_UPDATE_ERROR("销售商信息更新失败"),
 
     SHOP_AGENT_DELETE_ERROR("销售商删除失败"),
+
+    SHOP_CARGO_AGENT_IS_EXIST("调货销售商信息已存在"),
 
     SHOP_CARGO_AGENT_IS_NOT_EXIST("调货销售商信息不存在"),
 

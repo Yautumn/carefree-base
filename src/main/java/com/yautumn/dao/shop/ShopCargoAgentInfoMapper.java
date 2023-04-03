@@ -22,4 +22,6 @@ public interface ShopCargoAgentInfoMapper {
     List<ShopCargoAgentInfo> findAll(int start, int end, int shopId);
 
     int countByShopId(int shopId);
+
+    ShopCargoAgentInfo selectByCondition(String agentName,String houseNumber,String marketId);
 }

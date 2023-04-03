@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -75,6 +76,13 @@ public class ShopCommodityController {
     @PostMapping("/batch/insert")
     public ResultUtil batchInsert(@RequestBody List<ShopCommodityParam> shopCommodityParams){
         String msg = shopCommodityInfoService.batchInsert(shopCommodityParams);
+        return ResultUtil.success(msg);
+    }
+
+    @ApiOperation(value = "解析")
+    @PostMapping("/analysis")
+    public ResultUtil excelAnalysis(@RequestPart("file") MultipartFile file, @RequestParam int shopId){
+        String msg = shopCommodityInfoService.analysisExcel(file,shopId);
         return ResultUtil.success(msg);
     }
 

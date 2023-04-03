@@ -15,6 +15,8 @@ public interface ShopCommodityInformationMapper {
 
     ShopCommodityInformation selectByPrimaryKey(int id);
 
+    ShopCommodityInformation selectByCondition(int shopId, String productBrand,String productType,String productSpecific);
+
     int updateByPrimaryKeySelective(ShopCommodityInformation record);
 
     int updateByPrimaryKey(ShopCommodityInformation record);

@@ -1,9 +1,11 @@
 package com.yautumn.common.utils;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -82,4 +84,13 @@ public class JedisUtils {
         return this.getKeyStr(keyPre,id);
     }
 
+    public List<T> selectAll(String key) throws InterruptedException{
+        List<T> tList = (List<T>) redisTemplate.opsForValue().get(key);
+        if (null == tList){
+            synchronized (T.class){
+
+            }
+        }
+        return tList;
+    }
 }

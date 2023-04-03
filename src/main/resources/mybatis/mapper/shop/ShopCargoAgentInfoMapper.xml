@@ -173,4 +173,13 @@
     from shop_cargo_agent_information
     where status = 1 and shop_id = #{shopId}
   </select>
+  <select id="selectByCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from shop_cargo_agent_information
+    where status = 1
+      and agent_name = #{agentName,jdbcType=VARCHAR}
+      and house_number = #{houseNumber,jdbcType=VARCHAR}
+      and market_id = #{marketId,jdbcType=VARCHAR}
+  </select>
 </mapper>

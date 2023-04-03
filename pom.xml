@@ -23,6 +23,12 @@
     </properties>
 
     <dependencies>
+        <!-- redission jar-->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.19.0</version>
+        </dependency>
         <!--        fileupload jar -->
         <dependency>
             <groupId>commons-io</groupId>

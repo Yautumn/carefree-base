@@ -24,12 +24,25 @@
     from shop_commodity_information
     where status = 1 and id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from shop_commodity_information
+    where status = 1
+    and product_brand = #{productBrand}
+    and product_type = #{productType}
+    and product_specific = #{productSpecific}
+    and shop_id = #{shopId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete
     from shop_commodity_information
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.yautumn.common.entity.shop.ShopCommodityInformation">
+    <selectKey resultType="integer" order="AFTER" keyProperty="id">
+      select last_insert_id()
+    </selectKey>
     insert into shop_commodity_information ( shop_id, product_brand, product_name,
                                             product_type, product_specific, product_unit,
                                             status, createtime, updatetime,
